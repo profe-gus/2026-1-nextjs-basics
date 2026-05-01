@@ -1,6 +1,23 @@
 import React from 'react'
-import { IoCalculatorOutline } from 'react-icons/io5'
+import { IoAccessibility, IoCalculatorOutline } from 'react-icons/io5'
 import { SidebarMenuItems } from './SidebarMenuItems';
+import { MenuItems } from '../interfaces/menu-items.interface';
+
+const menuItems:MenuItems[]=[
+  {
+    path:"/dashboard/counter",
+    icon:<IoCalculatorOutline/>,
+    title:"Counter",
+    subtitle:"Simple counter application"
+  },
+  {
+    path:"/dashboard/main",
+    icon:<IoAccessibility/>,
+    title:"Accesibility",
+    subtitle:"User helper"
+  }
+]
+
 
 export const Sidebar = () => {
   return (
@@ -29,9 +46,11 @@ export const Sidebar = () => {
               </div>
     
               <div className="w-full px-6">
-    
-               <SidebarMenuItems/>
-    
+                {
+                  menuItems.map(item => (
+                    <SidebarMenuItems key={item.path} {...item}/>
+                  ))
+                }
     
               </div>
             </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { MenuItems } from '../interfaces/menu-items.interface'
 
 export const SidebarMenuItems = ({path, icon, title, subtitle}:MenuItems) => {
