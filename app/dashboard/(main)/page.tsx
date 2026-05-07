@@ -1,6 +1,7 @@
 "use client"
 import { Result, User } from "@/app/interfaces/user-response.interface";
 import userService from "@/app/services/user.service";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function MainPage() {
@@ -25,7 +26,7 @@ export default function MainPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center">
         <div className="col-span-12">
           <div className="overflow-auto lg:overflow-visible">
 
@@ -43,13 +44,13 @@ export default function MainPage() {
               <tbody>
                 {
                     users ? users.map(user => (
-                      <tr>
-                        <td className="p-3">{user.name.first}</td>
-                        <td className="p-3">Masculino</td>
-                        <td className="p-3">Calle falsa 123</td>
-                        <td className="p-3">gus@mail.com</td>
-                        <td className="p-3">3123456789</td>
-                        <td className="p-3">http://foto.com</td>
+                      <tr key={user.email}>
+                        <td className="p-3">{user.name.first} {user.name.last}</td>
+                        <td className="p-3">{user.gender}</td>
+                        <td className="p-3">{user.location.street.name} {user.location.street.number}</td>
+                        <td className="p-3">{user.email}</td>
+                        <td className="p-3">{user.cell}</td>
+                        <td className="p-3"><Image src={user.picture.thumbnail} alt={user.name.first} width={48} height={48}/></td>
                       </tr>
                     )): ""
                   }
