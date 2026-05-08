@@ -17,3 +17,10 @@ export type StudentStore = {
     getStudent: (limit: number, offset: number) => Promise<void>
 }
 
+export type StoreSet = (
+    partial : StudentStore |
+              Partial<StudentStore> |
+              ((state: StudentStore) => StudentStore |
+            Partial<StudentStore>),
+    replace?: boolean | undefined) => void
+

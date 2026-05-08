@@ -1,5 +1,5 @@
 import React from 'react'
-import { IoAccessibility, IoCalculatorOutline } from 'react-icons/io5'
+import { IoAccessibility, IoCalculatorOutline, IoPeople } from 'react-icons/io5'
 import { SidebarMenuItems } from './SidebarMenuItems';
 import { MenuItems } from '../interfaces/menu-items.interface';
 
@@ -15,6 +15,12 @@ const menuItems:MenuItems[]=[
     icon:<IoAccessibility/>,
     title:"Accesibility",
     subtitle:"User helper"
+  },
+  {
+    path:"/dashboard/students",
+    icon:<IoPeople/>,
+    title:"Students",
+    subtitle:"Students manager"
   }
 ]
 

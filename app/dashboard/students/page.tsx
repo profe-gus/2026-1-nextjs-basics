@@ -1,8 +1,58 @@
+'use client'
+import { useStudentStore } from "@/app/_store/store/students.store";
+import { useEffect } from "react";
+import Link from "next/link";
+import { IoPencilOutline } from "react-icons/io5";
 
 export default function StudentsPage() {
-  return (
-    <div>
-      <h1>Hello Page</h1>
-    </div>
-  );
+
+  const {student, getStudent} = useStudentStore();
+
+  useEffect(()=>{
+    getStudent(10,1);
+    console.log(student)
+  },[getStudent])
+  
+
+   return (
+      <div>
+        <div className="flex items-center justify-center">
+          <div className="col-span-12">
+            <div className="overflow-auto lg:overflow-visible">
+  
+              <table className="table border-separate space-y-6 text-sm">
+                <thead className="bg-gray-800 text-white">
+                  <tr>
+                    <th className="p-3">Nombre completo</th>
+                    <th className="p-3">Edad</th>
+                    <th className="p-3">Genero</th>
+                    <th className="p-3">Email</th>
+                    <th className="p-3">Materias</th>
+                    <th className="p-3">Editar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                      student ? student.map(student => (
+                        <tr key={student.id}>
+                          <td className="p-3">{student.name}</td>
+                          <td className="p-3">{student.age}</td>
+                          <td className="p-3">{student.gender}</td>
+                          <td className="p-3">{student.email}</td>
+                          <td className="p-3">{(student.subjects).join(",")}</td>
+                          <td className="p-3"><Link href={`/dashboard/editar-estudiante?id=${student.id}`}><IoPencilOutline/></Link></td>
+                        </tr>
+                      )): ""
+                    }
+                  
+                </tbody>
+              </table>
+  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    );
+
 }
