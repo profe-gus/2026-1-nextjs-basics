@@ -16,7 +16,7 @@ export default function StudentsPage() {
 
    return (
       <div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center min-h-screen">
           <div className="col-span-12">
             <div className="overflow-auto lg:overflow-visible">
   
